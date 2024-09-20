@@ -1,0 +1,39 @@
+Module 4 : Oops concepts
+========================
+
+*Basic concepts of oops:
+
+Q.2 What is OOP? List OOP concepts.
+Ans. Object-Oriented Programming (OOP) is a programming approach that uses objects and classes
+     to organize and manage code efficiently.
+
+list of oops concepts:- 
+	1. Class
+	2. Object
+	3. Encapsulation
+	4. Abstraction
+	5. Inheritance
+	6. Polymorphism
+	7. Constructor
+	8. Destructor
+
+Q.3  What is the difference between OOP and POP?
+	
+Ans. Different between them :
+
+1. Oop:
+   - Organizes code around objects and classes.
+   - Encapsulates data within objects, providing better control and protection.
+   - Promotes modularity through classes and objects, making the code more organized and reusable.
+   - Supports code reuse through inheritance and polymorphism.
+   - Better suited for managing complex applications with its structured approach.
+
+3. Pop:
+	- Organizes code around functions and procedures.
+	- Data is handled by passing it between functions, making it more exposed.
+    - Modularity is achieved through functions, but can be less effective for larger programs.
+	- Reuse is limited to function calls and can be less flexible.
+	- More suited for simpler, straightforward tasks and can become less manageable as complexity grows.
+
+
+
