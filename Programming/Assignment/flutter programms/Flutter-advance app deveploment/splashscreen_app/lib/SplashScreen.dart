@@ -28,7 +28,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
         width: double.infinity,
         color: Colors.lightBlue.shade100,
         child: Center(
-            child: Image.asset('assets/images/girl_icon.png'),),
+            child: Image.asset('assets/images/girl.jpg'),),
       ),
     );
   }
