@@ -1,19 +1,12 @@
-import 'package:assesment_first/Notebook/Books/Models/details.dart';
-import 'package:assesment_first/Notebook/Books/Models/ref_edu_boook_model.dart';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:random_string/random_string.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Myrefedufiction extends StatefulWidget {
-  const Myrefedufiction({super.key});
-
+class Mydetail extends StatefulWidget {
   @override
-  State< Myrefedufiction> createState() => _MyrefedufictionState();
+  _MydetailState createState() => _MydetailState();
 }
 
+<<<<<<< HEAD
 class _MyrefedufictionState extends State< Myrefedufiction> {
   final user = FirebaseAuth.instance.currentUser;
 
@@ -99,267 +92,189 @@ class _MyrefedufictionState extends State< Myrefedufiction> {
     );
   }
 
+=======
+class _MydetailState extends State<Mydetail> {
+>>>>>>> origin/main
   @override
   Widget build(BuildContext context) {
 
-    DropdownMenuItem<String> dropdownItem(String refedufictionbook) =>
-        DropdownMenuItem(
-            value: refedufictionbook,
-            child: Text(refedufictionbook, style: TextStyle(fontSize: 17),)
-        );
+    String? value;
+    String? gender;
+
 
     return Scaffold(
-      backgroundColor: Colors.deepPurple.shade300,
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 35),
-              Text('Reference Form', style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold)),
-              SizedBox(height: 20),
+      appBar: AppBar(
+        title: Text('User Details', style: TextStyle(fontSize: 20, color: Colors.white)),
+        backgroundColor: Colors.deepPurple.shade600,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add,color: Colors.white,),
+            onPressed: () {
+              TextEditingController nameController = TextEditingController();
+              TextEditingController emailController = TextEditingController();
+              TextEditingController contactController = TextEditingController();
+              TextEditingController ageController = TextEditingController();
+              TextEditingController genderController = TextEditingController();
+              TextEditingController cityController = TextEditingController();
+              TextEditingController bookController = TextEditingController();
 
-              TextFormField(
-                controller: _nameController,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    labelText: 'UserName',
-                    labelStyle: TextStyle(
-                        color: Colors.black, fontSize: 16),
-                    suffixIcon: Icon(
-                      Icons.person, color: Colors.deepPurple,),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.black26,
-                        )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                            color: Colors.deepPurple.shade900
-                        )
-                    )
-                ),
-              ),
-
-              SizedBox(height: 20,),
-
-              TextFormField(
-                controller: _emailidController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                    labelText: 'Email id',
-                    labelStyle: TextStyle(
-                        color: Colors.black, fontSize: 16),
-                    filled: true,
-                    fillColor: Colors.white,
-                    suffixIcon: Icon(
-                      Icons.alternate_email, color: Colors.deepPurple,),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.black26,
-                        )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                            color: Colors.amber
-                        )
-                    )
-                ),
-              ),
-
-              SizedBox(height: 20,),
-
-              TextFormField(
-                controller: _contactnoController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    labelText: 'Contact no.',
-                    labelStyle: TextStyle(
-                        color: Colors.black, fontSize: 16),
-                    filled: true,
-                    fillColor: Colors.white,
-                    suffixIcon: Icon(Icons.contact_phone_outlined,
-                      color: Colors.deepPurple,),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.black26,
-                        )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                            color: Colors.amber
-                        )
-                    )
-                ),
-              ),
-
-              SizedBox(height: 20,),
-
-              TextFormField(
-                controller: _ageController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    labelText: 'Age',
-                    labelStyle: TextStyle(
-                        color: Colors.black, fontSize: 16),
-                    suffixIcon: Icon(
-                      Icons.cake_outlined, color: Colors.deepPurple,),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: Colors.black26,
-                        )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                            color: Colors.deepPurple.shade900
-                        )
-                    )
-                ),
-              ),
-
-              SizedBox(height: 20,),
-
-              Column(
-                children: [
-                  Text("Gender", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.white)),
-                  SizedBox(height: 10,),
-                  Row(
-                    children:
-                    [
-                      SizedBox(width: 20,),
-
-                      Radio<String>(
-                        fillColor: MaterialStateProperty.all(Colors.white),
-                        value: "Male",
-                        groupValue: gender,
-                        onChanged: (value) {
-                          setState(() {
-                            gender = value;
-                          });
-                        },
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text('Add New User'),
+                    content: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          TextField(controller: nameController,keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'Name')),
+                          TextField(controller: emailController,keyboardType: TextInputType.emailAddress, decoration: InputDecoration(labelText: 'Email')),
+                          TextField(controller: contactController,keyboardType: TextInputType.number, decoration: InputDecoration(labelText: 'Contact')),
+                          TextField(controller: ageController,keyboardType: TextInputType.number, decoration: InputDecoration(labelText: 'Age')),
+                          TextField(controller: genderController,keyboardType:TextInputType.text, decoration: InputDecoration(labelText: 'Gender')),
+                          TextField(controller: cityController,keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'City')),
+                          TextField(controller: bookController,keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'Book')),
+                        ],
                       ),
-                      Text("Male",style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.bold),),
-
-                      SizedBox(width: 50,),
-
-                      Radio<String>(
-                        fillColor: MaterialStateProperty.all(Colors.white),
-                        value: "Female",
-                        groupValue: gender,
-                        onChanged: (value) {
-                          setState(() {
-                            gender = value;
-                          });
+                    ),
+                    actions: [
+                      TextButton(onPressed: () => Navigator.pop(context), child: Text('Cancel')),
+                      ElevatedButton(
+                        onPressed: () async {
+                          if (nameController.text.isNotEmpty && emailController.text.isNotEmpty) {
+                            await FirebaseFirestore.instance.collection('users').add({
+                              'name': nameController.text.trim(),
+                              'email': emailController.text.trim(),
+                              'contact': contactController.text.trim(),
+                              'age': ageController.text.trim(),
+                              'gender': genderController.text.trim(),
+                              'city': cityController.text.trim(),
+                              'book': bookController.text.trim(),
+                            });
+                            Navigator.pop(context);
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Name and Email are required')),
+                            );
+                          }
                         },
+                        child: Text('Add'),
                       ),
-                      Text("Female",style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.bold),),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      ),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('users').snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+
+          final ficList = snapshot.data!.docs;
+
+          return ListView.builder(
+            itemCount: ficList.length,
+            itemBuilder: (context, index) {
+              final doc = ficList[index];
+              final data = doc.data() as Map<String, dynamic>;
+
+              return Card(
+                color: Colors.brown.shade100,
+                elevation: 3,
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                shadowColor: Colors.brown.shade900,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Name: ${data['name']}', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text('Email: ${data['email']}'),
+                      Text('Contact No.: ${data['contact']}'),
+                      Text('Age: ${data['age']}'),
+                      Text('Gender: ${data['gender']}'),
+                      Text('City: ${data['city']}'),
+                      Text('Selected Book: ${data['book']}'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.edit, color: Colors.deepPurple),
+                            onPressed: () {
+                              TextEditingController nameController = TextEditingController(text: data['name']);
+                              TextEditingController emailController = TextEditingController(text: data['email']);
+                              TextEditingController contactController = TextEditingController(text: data['contact'].toString());
+                              TextEditingController ageController = TextEditingController(text: data['age'].toString());
+                              TextEditingController genderController = TextEditingController(text: data['gender']);
+                              TextEditingController cityController = TextEditingController(text: data['city']);
+                              TextEditingController bookController = TextEditingController(text: data['book']);
+
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text('Edit User'),
+                                    content: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          TextField(controller: nameController,keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'Name')),
+                                          TextField(controller: emailController,keyboardType: TextInputType.emailAddress, decoration: InputDecoration(labelText: 'Email')),
+                                          TextField(controller: contactController,keyboardType: TextInputType.number, decoration: InputDecoration(labelText: 'Contact')),
+                                          TextField(controller: ageController,keyboardType: TextInputType.number, decoration: InputDecoration(labelText: 'Age')),
+                                          TextField(controller: genderController,keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'Gender')),
+                                          TextField(controller: cityController,keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'City')),
+                                          TextField(controller: bookController,keyboardType: TextInputType.text, decoration: InputDecoration(labelText: 'Book')),
+                                        ],
+                                      ),
+                                    ),
+                                    actions: [
+                                      TextButton(onPressed: () => Navigator.pop(context), child: Text('Cancel')),
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          if (nameController.text.isNotEmpty && emailController.text.isNotEmpty) {
+                                            await FirebaseFirestore.instance.collection('users').doc(doc.id).update({
+                                              'name': nameController.text.trim(),
+                                              'email': emailController.text.trim(),
+                                              'contact': contactController.text.trim(),
+                                              'age': ageController.text.trim(),
+                                              'gender': genderController.text.trim(),
+                                              'city': cityController.text.trim(),
+                                              'book': bookController.text.trim(),
+                                            });
+                                            Navigator.pop(context);
+                                          } else {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                              SnackBar(content: Text('Fields cannot be empty!')),
+                                            );
+                                          }
+                                        },
+                                        child: Text('Update'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete, color: Colors.deepPurple),
+                            onPressed: () {
+                              FirebaseFirestore.instance.collection('users').doc(doc.id).delete();
+                            },
+                          ),
+                        ],
+                      ),
                     ],
                   ),
-
-
-                  SizedBox(height: 20,),
-
-                  TextFormField(
-                    controller: _cityController,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        labelText: 'City',
-                        labelStyle: TextStyle(
-                            color: Colors.black, fontSize: 16),
-                        suffixIcon: Icon(
-                          Icons.location_city_sharp, color: Colors.deepPurple,),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: Colors.black26,
-                            )
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                                color: Colors.deepPurple.shade900
-                            )
-                        )
-                    ),
-                  ),
-
-                  SizedBox(height: 20,),
-
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: EdgeInsets.all(12),
-                    child: DropdownButton<String>(
-                      hint: Text(
-                        'Select Book', style: TextStyle(fontSize: 16),),
-                      isExpanded: true,
-                      value: value,
-                      underline: SizedBox(),
-                      items: referenceandeducational_books.map(dropdownItem).toList(),
-                      onChanged: (newvalue) {
-                        setState(() {
-                          this.value = newvalue;
-                        });
-                      },
-                    ),
-                  ),
-
-
-                  SizedBox(height: 20),
-
-                  ElevatedButton(
-                    onPressed: () {
-                      print('name : ${_nameController.text.trim()}');
-                      print('email : ${_emailidController.text.trim()}');
-                      print('Contact no. : ${_contactnoController.text.trim()}');
-                      print('Age : ${_ageController.text.trim()}');
-                      print('Gender : $gender');
-                      print('City : ${_cityController.text.trim()}');
-                      print('Selected book : $value');
-
-                      refedufictionbook();
-                    },
-                    child: Text('Submit', style: TextStyle(fontSize: 16)),
-                  ),
-                  SizedBox(height: 10),
-
-                  ElevatedButton(
-                    onPressed: () {
-                      _nameController.clear();
-                      _emailidController.clear();
-                      _contactnoController.clear();
-                      _ageController.clear();
-                      _cityController.clear();
-                      setState(() {
-                        value = null;
-                        gender = null;
-                      });
-                    },
-                    child: Text('Clear Form', style: TextStyle(fontSize: 16)),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
 }
+
