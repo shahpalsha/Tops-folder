@@ -15,7 +15,7 @@ class Nonfiction extends StatefulWidget {
 }
 
 class _NonfictionState extends State<Nonfiction> {
-  final user = FirebaseAuth.instance.currentUser!;
+  final user = FirebaseAuth.instance.currentUser;
 
   final nonfic_books = [
     'Biographies & Autobiographies Non-fiction',
@@ -61,7 +61,7 @@ class _NonfictionState extends State<Nonfiction> {
     String _age = _ageController.text.trim();
     String _city = _cityController.text.trim();
 
-    final book = NonFictionBookModel(
+    final user = NonFictionBookModel(
       id: _id,
       name: _name,
       email: _email,
@@ -72,7 +72,7 @@ class _NonfictionState extends State<Nonfiction> {
       book: value!,
     );
 
-    await FirebaseFirestore.instance.collection('users').doc(_id).set(book.toJson());
+    await FirebaseFirestore.instance.collection('users').doc(_id).set(user.toJson());
 
     Fluttertoast.showToast(
         msg: "Created successfully",

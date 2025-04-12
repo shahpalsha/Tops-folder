@@ -14,7 +14,7 @@ class Fiction extends StatefulWidget {
 }
 
 class _FictionState extends State<Fiction> {
-  final user = FirebaseAuth.instance.currentUser!;
+  final user = FirebaseAuth.instance.currentUser;
 
   final fic_books = [
     'Fantasy Fiction',
@@ -62,7 +62,7 @@ class _FictionState extends State<Fiction> {
     String _age = _ageController.text.trim();
     String _city = _cityController.text.trim();
 
-    final book = FictionBookModel(
+    final user = FictionBookModel(
       id: _id,
       name: _name,
       email: _email,
@@ -73,7 +73,7 @@ class _FictionState extends State<Fiction> {
       book: value!,
     );
 
-    await FirebaseFirestore.instance.collection('book').doc(_id).set(book.toJson());
+    await FirebaseFirestore.instance.collection('users').doc(_id).set(user.toJson());
 
     Fluttertoast.showToast(
         msg: "Created successfully",

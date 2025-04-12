@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "94248904591",
+    "project_id": "travelguidance-3098f",
+    "storage_bucket": "travelguidance-3098f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94248904591:android:d3116484915900017dcdfa",
+        "android_client_info": {
+          "package_name": "com.example.travel_guidance_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgBfJX5bIjbmZSyVu2DY4a336qF0FK2cA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
